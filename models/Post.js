@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
-	url: {
+	id: {
 		type: String,
 		required: true,
 	},
