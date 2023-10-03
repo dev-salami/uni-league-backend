@@ -19,6 +19,7 @@ const connectDB = require("./db/connect");
 const fixtureRouter = require("./routes/fixtureRoutes");
 const resultsRouter = require("./routes/resultRoutes");
 const statRouter = require("./routes/statRoutes");
+const postRouter = require("./routes/postRoutes");
 
 // middleware
 const notFoundMiddleware = require("./middleware/not-found");
@@ -32,6 +33,17 @@ app.use(
 	})
 );
 // app.use(helmet());
+// app.use(
+// 	cors({
+// 		origin: [
+// 			"http://localhost:3000",
+// 			"https://invoice-ney.vercel.app",
+// 			"https://invoicea.vercel.app",
+// 		],
+// 		credentials: true,
+// 	})
+// )
+
 app.use(cors());
 // app.use(xss());
 // app.use(mongoSanitize());
@@ -42,6 +54,7 @@ app.use(express.json());
 app.use("/api/v1/fixtures", fixtureRouter);
 app.use("/api/v1/results", resultsRouter);
 app.use("/api/v1/stat", statRouter);
+app.use("/api/v1/post", postRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

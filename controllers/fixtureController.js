@@ -1,6 +1,9 @@
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
 const Fixture = require("../models/Fixture");
+const {
+	findMaxSeasonAndMatchday,
+} = require("../utils/getCurrentSeasonAndMatchday");
 
 const getFixtureBySeason = async (req, res) => {
 	const { season } = req.query;
@@ -62,6 +65,13 @@ const editFixture = async (req, res) => {
 const deleteFixture = async (req, res) => {
 	res.status(StatusCodes.OK).send("deleteFixture");
 };
+const getCurrentSeasonAndMatchday = async (req, res) => {
+	const allFixture = await Fixture.find({});
+	const { currentSeason, currentMatchday } =
+		findMaxSeasonAndMatchday(allFixture);
+
+	res.status(StatusCodes.OK).send({ currentSeason, currentMatchday });
+};
 
 module.exports = {
 	getAllFixture,
@@ -70,4 +80,5 @@ module.exports = {
 	deleteFixture,
 	editFixture,
 	createFixture,
+	getCurrentSeasonAndMatchday,
 };

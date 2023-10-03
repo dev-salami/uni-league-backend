@@ -8,6 +8,7 @@ const {
 	getFixtureBySeason,
 	getSeasonMatchdayFixture,
 	createFixture,
+	getCurrentSeasonAndMatchday,
 } = require("../controllers/fixtureController");
 
 router
@@ -19,5 +20,7 @@ router
 
 router.get("/get-season-fixtures", getFixtureBySeason);
 router.get("/get-season-matchday", getSeasonMatchdayFixture);
+router.get("/get-CurrentSeasonAndMatchday", getCurrentSeasonAndMatchday);
+getCurrentSeasonAndMatchday;
 
 module.exports = router;
