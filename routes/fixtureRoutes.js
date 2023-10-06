@@ -11,16 +11,8 @@ const {
 	getCurrentSeasonAndMatchday,
 } = require("../controllers/fixtureController");
 
-router
-	.route("/")
-	.get(getAllFixture)
-	.post(createFixture)
-	
-	router
-	.route("/:id")
-
-	.patch(editFixture)
-	.delete(deleteFixture);
+router.route("/").get(getAllFixture).post(createFixture);
+router.route("/:id").patch(editFixture).delete(deleteFixture);
 
 router.get("/get-season-fixtures", getFixtureBySeason);
 router.get("/get-season-matchday", getSeasonMatchdayFixture);

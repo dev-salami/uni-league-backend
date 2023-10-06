@@ -68,7 +68,7 @@ const editFixture = async (req, res) => {
 	if (!fixture) {
 		throw new CustomError(` No Fixture with id : ${id}`, StatusCodes.NOT_FOUND);
 	}
-	res.status(StatusCodes.OK).send("editFixture");
+	res.status(StatusCodes.OK).send(fixture);
 };
 const deleteFixture = async (req, res) => {
 	res.status(StatusCodes.OK).send("deleteFixture");
