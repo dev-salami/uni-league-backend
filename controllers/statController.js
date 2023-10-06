@@ -15,9 +15,8 @@ const getSeasonTable = async (req, res) => {
 		const seasonResult = await Result.find(req.query);
 		// console.log(seasonResult);
 		if (seasonResult.length === 0) {
-			throw new CustomError.NotFoundError(
-				"League table for this season not available"
-			);
+			const leagueTable = generateLeagueTable(seasonResult);
+			res.status(StatusCodes.OK).json([]);
 		} else {
 			const leagueTable = generateLeagueTable(seasonResult);
 			res.status(StatusCodes.OK).json(leagueTable);

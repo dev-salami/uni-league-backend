@@ -13,7 +13,7 @@ const Post = require("../models/Post");
 const getAllPost = async (req, res) => {
 	const posts = await Post.find({});
 	if (posts.length === 0) {
-		throw new CustomError.NotFoundError("There are no Post");
+		res.status(StatusCodes.OK).send("There are no Post");
 	} else {
 		res.status(StatusCodes.OK).json(posts);
 	}
