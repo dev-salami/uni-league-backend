@@ -15,6 +15,10 @@ router
 	.route("/")
 	.get(getAllFixture)
 	.post(createFixture)
+	
+	router
+	.route("/:id")
+
 	.patch(editFixture)
 	.delete(deleteFixture);
 

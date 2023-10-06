@@ -1,3 +1,4 @@
+const { boolean } = require("joi");
 const mongoose = require("mongoose");
 
 const fixtureSchema = new mongoose.Schema({
@@ -28,6 +29,11 @@ const fixtureSchema = new mongoose.Schema({
 	},
 	season: {
 		type: Number,
+		required: true,
+	},
+	played: {
+		type: Boolean,
+		default: false,
 		required: true,
 	},
 });

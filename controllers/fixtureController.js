@@ -60,6 +60,14 @@ const getSeasonMatchdayFixture = async (req, res) => {
 	}
 };
 const editFixture = async (req, res) => {
+	const { id } = req.params;
+
+	const fixture = await Fixture.findOneAndUpdate({ id: id }, req.body, {
+		new: true,
+	});
+	if (!fixture) {
+		throw new CustomError(` No Fixture with id : ${id}`, StatusCodes.NOT_FOUND);
+	}
 	res.status(StatusCodes.OK).send("editFixture");
 };
 const deleteFixture = async (req, res) => {
