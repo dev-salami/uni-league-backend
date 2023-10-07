@@ -61,12 +61,13 @@ const getSeasonMatchdayFixture = async (req, res) => {
 };
 const editFixture = async (req, res) => {
 	const { id } = req.params;
+	console.log(req.body);
 
-	const fixture = await Fixture.findOneAndUpdate({ id: id }, req.body, {
+	const fixture = await Fixture.findOneAndUpdate({ _id: id }, req.body, {
 		new: true,
 	});
 	if (!fixture) {
-		throw new CustomError(` No Fixture with id : ${id}`, StatusCodes.NOT_FOUND);
+		throw new CustomError.BadRequestError(` No Fixture with id : ${id}`);
 	}
 	res.status(StatusCodes.OK).send(fixture);
 };
