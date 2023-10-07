@@ -49,7 +49,33 @@ const getAllResult = async (req, res) => {
 	}
 };
 const createResult = async (req, res) => {
-	const result = await Result.create(req.body);
+	const {
+		homeTeam,
+		awayTeam,
+		venue,
+		time,
+		date,
+		matchday,
+		season,
+		homeTeamScorer,
+		awayTeamScorer,
+		homeTeamScore,
+		awayTeamScore,
+	} = req.body;
+	const result = await Result.create({
+		homeTeam,
+		awayTeam,
+		venue,
+		time,
+		date,
+		matchday,
+		season,
+		homeTeamScorer,
+		awayTeamScorer,
+		homeTeamScore,
+		awayTeamScore,
+	});
+	// console.log(EditedResult);
 	if (!result) {
 		throw new CustomError.BadRequestError("Something went wrong");
 	}
